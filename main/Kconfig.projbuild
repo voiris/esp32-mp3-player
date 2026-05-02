@@ -1,0 +1,208 @@
+menu "MP3 Player Settings"
+
+config MUSIC_PATH
+    string "Music path (directory with MP3 files)"
+    default "music"
+
+menu "Player"
+
+config IR_NEXT_TRACK
+    hex "Go to next track (IR received code, in HEX)"
+    default 0xBC43FF00
+
+config IR_PREV_TRACK
+    hex "Go to next track (IR received code, in HEX)"
+    default 0xBB44FF00
+
+config IR_PAUSE
+    hex "Go to next track (IR received code, in HEX)"
+    default 0xBF40FF00
+
+config IR_VOLUME_UP
+    hex "Go to next track (IR received code, in HEX)"
+    default 0xB946FF00
+
+config IR_VOLUME_DOWN
+    hex "Go to next track (IR received code, in HEX)"
+    default 0xEA15FF00
+
+config MUTE_PIN
+    int "Mute GPIO pin"
+    default 17
+
+config START_VOLUME
+    int "Volume level on start (0-100)"
+    default 30
+
+config VOLUME_STEP
+    int "Volume change step"
+    default 5
+
+endmenu
+
+menu "I2S Output"
+
+config BCLK_GPIO_PIN
+    int "BCLK GPIO pin number"
+    default 4
+    range 0 39
+
+config LRC_GPIO_PIN
+    int "LRC GPIO pin number"
+    default 5
+    range 0 39
+
+config DIN_GPIO_PIN
+    int "DIN GPIO pin number"
+    default 6
+    range 0 39
+
+endmenu
+
+menu "MP3 Decoder"
+
+config MP3_CHUNK_SIZE
+    int "MP3 chunk size (bytes)"
+    default 8192
+
+config REFILL_THRESHOLD
+    int "MP3 refill threshold (bytes)"
+    default 2048
+
+config SD_QUEUE_DEPTH
+    int "SD queue depth"
+    default 6
+
+config PCM_QUEUE_DEPTH
+    int "PCM queue depth"
+    default 3
+
+endmenu
+
+menu "SD Card"
+
+config MOUNT_POINT
+    string "SD card mount point"
+    default "/sdcard"
+
+config CS_GPIO_PIN
+    int "CS GPIO pin number"
+    default 13
+    range 0 39
+
+config SCK_GPIO_PIN
+    int "SCK GPIO pin number"
+    default 12
+    range 0 39
+
+config MOSI_GPIO_PIN
+    int "SCK GPIO pin number"
+    default 11
+    range 0 39
+
+config MISO_GPIO_PIN
+    int "SCK GPIO pin number"
+    default 10
+    range 0 39
+
+config MAX_OPENED_FILES
+    int "Maximum number of files that can be open simultaneously"
+    default 5
+
+config MAX_TRANSFER_SIZE
+    int "Maximum number of bytes per single data transfer"
+    default 4096
+
+config MAX_BUS_FREQUENCY
+    int "Maximum bus frequency (kHz)"
+    default 4000
+
+config ALLOCATION_UNIT_SIZE
+    int "Cluster size in bytes (smallest unit of storage for a file)"
+    default 16384
+
+endmenu
+
+
+menu "IR Receiver"
+
+menu "Configuration"
+
+config IR_RX_GPIO_PIN
+    int "IR receiver GPIO pin"
+    default 16
+    range 0 39
+
+config RMT_CLK_RES_HZ
+    int "RMT peripheral clock resolution in Hz"
+    default 1000000
+
+config IR_RX_MEM_BLOCK_SYM
+    int "Number of memory blocks for IR symbols"
+    default 64
+
+config IR_RX_QUEUE_DEPTH
+    int "Depth of the IR reception queue"
+    default 4
+
+config IR_DECODE_MARGIN_US
+    int "Timing margin for IR decoding in microseconds"
+    default 200
+
+config RAW_BUF_SIZE
+    int "Size of raw buffer for IR pulses"
+    default 128
+
+endmenu
+
+menu "NEC protocol constants"
+
+config NEC_LEAD_HI
+    int "NEC leading high pulse duration in microseconds"
+    default 9000
+
+config NEC_LEAD_LO
+    int "NEC leading low pulse duration in microseconds"
+    default 4500
+
+config NEC_BIT_HI
+    int "NEC bit high pulse duration in microseconds"
+    default 560
+
+config NEC_ONE_LO
+    int "NEC '1' low pulse duration in microseconds"
+    default 1690
+
+config NEC_ZERO_LO
+    int "NEC '0' low pulse duration in microseconds"
+    default 560
+
+config NEC_RPT_LO
+    int "NEC repeat code low pulse duration in microseconds"
+    default 2150
+
+endmenu
+
+endmenu
+
+menu "Display (SSD1306)"
+
+config SSD1306_SDA_GPIO_PIN
+    int "SSD1306 SDA GPIO pin"
+    default 15
+
+config SSD1306_SCL_GPIO_PIN
+    int "SSD1306 SCL GPIO pin"
+    default 7
+
+config SSD1306_WIDTH
+    int "SDD1306 display width"
+    default 128
+
+config SSD1306_HEIGHT
+    int "SDD1306 display height"
+    default 64
+
+endmenu
+
+endmenu
